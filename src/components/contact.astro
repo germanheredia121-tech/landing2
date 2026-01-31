@@ -133,34 +133,34 @@ tailwind.config = {
 
 <!-- Right Column: Minimalist Form -->
 <div class="lg:col-span-7 bg-white/50 dark:bg-slate-900/30 p-8 md:p-12 rounded-2xl backdrop-blur-sm border border-slate-200 dark:border-[#233648] reveal hover-card">
-<form action="#" class="flex flex-col gap-8">
+<form id="contactForm" class="flex flex-col gap-8">
 <div class="flex flex-col gap-1">
 <label class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest">Nombre Completo</label>
-<input class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg placeholder:text-slate-300 dark:placeholder:text-slate-700" placeholder="Ej. Juan Pérez" type="text"/>
+<input id="name" class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg placeholder:text-slate-300 dark:placeholder:text-slate-700" placeholder="Ej. Juan Pérez" type="text"/>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <div class="flex flex-col gap-1">
 <label class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest">Teléfono</label>
-<input class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg placeholder:text-slate-300 dark:placeholder:text-slate-700" placeholder="+54 9 351 ..." type="tel"/>
+<input id="phone" class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg placeholder:text-slate-300 dark:placeholder:text-slate-700" placeholder="+54 9 351 ..." type="tel"/>
 </div>
 <div class="flex flex-col gap-1">
 <label class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest">Email</label>
-<input class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg placeholder:text-slate-300 dark:placeholder:text-slate-700" placeholder="correo@ejemplo.com" type="email"/>
+<input id="email" class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg placeholder:text-slate-300 dark:placeholder:text-slate-700" placeholder="correo@ejemplo.com" type="email"/>
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <div class="flex flex-col gap-1">
 <label class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest">Llegada</label>
-<input class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg appearance-none" type="date"/>
+<input id="arrival" class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg appearance-none" type="date"/>
 </div>
 <div class="flex flex-col gap-1">
 <label class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest">Salida</label>
-<input class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg appearance-none" type="date"/>
+<input id="departure" class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg appearance-none" type="date"/>
 </div>
 </div>
 <div class="flex flex-col gap-1">
 <label class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest">Mensaje o Requerimientos Especiales</label>
-<textarea class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg placeholder:text-slate-300 dark:placeholder:text-slate-700 resize-none" placeholder="Cuéntenos cómo podemos mejorar su estancia..." rows="3"></textarea>
+<textarea id="message" class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg placeholder:text-slate-300 dark:placeholder:text-slate-700 resize-none" placeholder="Cuéntenos cómo podemos mejorar su estancia..." rows="3"></textarea>
 </div>
 <button class="mt-4 flex w-full items-center justify-center rounded-lg h-16 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-lg font-bold uppercase tracking-widest transition-all hover:bg-slate-800 dark:hover:bg-slate-100 active:scale-[0.98] border border-transparent dark:border-slate-800" type="submit">
 Enviar Reserva
@@ -199,6 +199,22 @@ const observer = new IntersectionObserver(
   { threshold: 0.1 }
 );
 document.querySelectorAll(".reveal, .hover-card").forEach(el => observer.observe(el));
+
+// Enviar info del formulario a WhatsApp
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const name = (document.getElementById('name') as HTMLInputElement).value;
+  const phone = (document.getElementById('phone') as HTMLInputElement).value;
+  const email = (document.getElementById('email') as HTMLInputElement).value;
+  const arrival = (document.getElementById('arrival') as HTMLInputElement).value;
+  const departure = (document.getElementById('departure') as HTMLInputElement).value;
+  const message = (document.getElementById('message') as HTMLTextAreaElement).value;
+
+  const whatsappMsg = `¡Hola! Quiero reservar en Carlos Paz Hostel.\nNombre: ${name}\nTeléfono: ${phone}\nEmail: ${email}\nLlegada: ${arrival}\nSalida: ${departure}\nMensaje: ${message}`;
+  const url = `https://wa.me/543549430573?text=${encodeURIComponent(whatsappMsg)}`;
+  window.open(url, '_blank');
+});
 </script>
 
 </body>
