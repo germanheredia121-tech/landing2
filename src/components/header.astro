@@ -1,0 +1,72 @@
+---
+/* No props necesarias */
+---
+<header
+  id="site-header"
+  class="absolute top-0 left-0 w-full z-50
+         flex items-center justify-between
+         px-8 lg:px-20 py-6
+         transition-all duration-300 ease-out"
+>
+  <div class="flex items-center gap-3">
+    <div class="text-primary">
+      <svg class="size-8" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path
+          clip-rule="evenodd"
+          fill="currentColor"
+          fill-rule="evenodd"
+          d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336"
+        />
+      </svg>
+    </div>
+
+    <h2 class="text-white text-xl font-bold tracking-tight">
+      Carlos Paz Hostel
+    </h2>
+  </div>
+
+  <nav class="hidden md:flex items-center gap-10">
+    <a class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors" href="#services">Servicios</a>
+    <a class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors" href="#galery">Galeria</a>
+    <a class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors" href="#ubication">Ubicacion</a>
+    <a class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors" href="#contact">Contacto</a>
+  </nav>
+
+  <div class="flex items-center gap-6">
+    <a
+      href="#contact"
+      class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20"
+    >
+      Reservar
+    </a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("site-header");
+
+  let lastScroll = 0;
+
+  window.addEventListener("scroll", () => {
+    const current = window.scrollY;
+
+    if (current > 80) {
+      header.classList.add("header-scrolled");
+    } else {
+      header.classList.remove("header-scrolled");
+    }
+
+    lastScroll = current;
+  });
+
+  // Smooth scroll para todos los enlaces del navbar
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+</script>

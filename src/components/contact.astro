@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "primary": "#1173d4",
+                "gold": "#d4af37",
+                "background-light": "#fdfcfb",
+                "background-dark": "#101922",
+            },
+            fontFamily: {
+                "display": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+    },
+}
+</script>
+<style>
+.minimal-input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #324d67;
+    background: transparent !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-radius: 0 !important;
+}
+.minimal-input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-bottom: 2px solid #1173d4 !important;
+}
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.hover-card { transition: transform 0.5s ease, box-shadow 0.5s ease; }
+.hover-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+.group-hover\:bg-primary:hover { background-color: #1173d4 !important; }
+.group-hover\:text-white:hover { color: #fff !important; }
+</style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+
+<main class="flex-1 flex justify-center py-12 px-6 md:px-20 lg:px-40">
+<div class="layout-content-container flex flex-col max-w-[1100px] flex-1">
+<div class="mb-12 reveal">
+<h1 class="text-slate-900 dark:text-white tracking-tight text-[42px] font-bold leading-tight text-left pb-2">Contacto y Reservas Premium</h1>
+<p class="text-slate-500 dark:text-slate-400 text-lg max-w-2xl">Experimente la exclusividad en el corazón de las sierras. Estamos aquí para personalizar su estadía.</p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<!-- Left Column: Contact Info -->
+<div class="lg:col-span-5 flex flex-col gap-10 reveal">
+<div class="space-y-8">
+<!-- Phone -->
+<div class="group flex items-start gap-4 hover-card">
+<div class="flex size-12 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-slate-400 dark:text-[#92adc9] text-sm font-medium uppercase tracking-widest">Teléfono Directo</p>
+<p class="text-slate-900 dark:text-white text-xl font-normal leading-normal">+54 3541 123456</p>
+</div>
+</div>
+
+<!-- Email -->
+<div class="group flex items-start gap-4 hover-card">
+<div class="flex size-12 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-slate-400 dark:text-[#92adc9] text-sm font-medium uppercase tracking-widest">Consultas VIP</p>
+<p class="text-slate-900 dark:text-white text-xl font-normal leading-normal">reservas@carlospazhostel.com</p>
+</div>
+</div>
+
+<!-- Social -->
+<div class="group flex items-start gap-4 hover-card">
+<div class="flex size-12 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-slate-400 dark:text-[#92adc9] text-sm font-medium uppercase tracking-widest">Redes Sociales</p>
+<p class="text-slate-900 dark:text-white text-xl font-normal leading-normal">@carlospazhostel</p>
+</div>
+</div>
+
+<!-- Location -->
+<div class="group flex items-start gap-4 hover-card">
+<div class="flex size-12 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-slate-400 dark:text-[#92adc9] text-sm font-medium uppercase tracking-widest">Ubicación</p>
+<p class="text-slate-900 dark:text-white text-xl font-normal leading-normal">Carlos Paz, Córdoba, Argentina</p>
+</div>
+</div>
+</div>
+
+<!-- Clickable Google Maps Link -->
+<a href="https://www.google.com/maps/place/Carlos+Paz+Lodge/@-31.4251602,-64.4929729,17z/data=!4m10!3m9!1s0x94329870df53bb2f:0x8d776dd646c3afe3!5m3!1s2026-04-27!4m1!1i2!8m2!3d-31.4249932!4d-64.4923211!16s%2Fg%2F1tfm7rbz?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="mt-4 rounded-2xl overflow-hidden h-48 w-full relative block group hover-card reveal">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1353.522174819374!2d-64.49247935!3d-31.4248947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94329870df53bb2f%3A0x8d776dd646c3afe3!2sCarlos%20Paz%20Lodge!5e0!3m2!1ses!2sar!4v1706750000000!5m2!1ses!2sar" 
+    width="100%" 
+    height="100%" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+  <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
+  <div class="absolute bottom-4 left-4">
+    <p class="text-white text-sm font-semibold flex items-center gap-1">
+      <span class="material-symbols-outlined text-sm">explore</span> Ver en Google Maps
+    </p>
+  </div>
+</a>
+</div>
+
+<!-- Right Column: Minimalist Form -->
+<div class="lg:col-span-7 bg-white/50 dark:bg-slate-900/30 p-8 md:p-12 rounded-2xl backdrop-blur-sm border border-slate-200 dark:border-[#233648] reveal hover-card">
+<form action="#" class="flex flex-col gap-8">
+<div class="flex flex-col gap-1">
+<label class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest">Nombre Completo</label>
+<input class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg placeholder:text-slate-300 dark:placeholder:text-slate-700" placeholder="Ej. Juan Pérez" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-1">
+<label class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest">Teléfono</label>
+<input class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg placeholder:text-slate-300 dark:placeholder:text-slate-700" placeholder="+54 9 351 ..." type="tel"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest">Email</label>
+<input class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg placeholder:text-slate-300 dark:placeholder:text-slate-700" placeholder="correo@ejemplo.com" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-1">
+<label class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest">Llegada</label>
+<input class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg appearance-none" type="date"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest">Salida</label>
+<input class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg appearance-none" type="date"/>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest">Mensaje o Requerimientos Especiales</label>
+<textarea class="minimal-input w-full py-3 text-slate-900 dark:text-white text-lg placeholder:text-slate-300 dark:placeholder:text-slate-700 resize-none" placeholder="Cuéntenos cómo podemos mejorar su estancia..." rows="3"></textarea>
+</div>
+<button class="mt-4 flex w-full items-center justify-center rounded-lg h-16 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-lg font-bold uppercase tracking-widest transition-all hover:bg-slate-800 dark:hover:bg-slate-100 active:scale-[0.98] border border-transparent dark:border-slate-800" type="submit">
+Enviar Reserva
+</button>
+<p class="text-center text-slate-400 text-xs">Un asesor premium se contactará en menos de 24 horas.</p>
+</form>
+</div>
+
+</div>
+</div>
+</main>
+
+<!-- Footer -->
+<footer class="border-t border-slate-200 dark:border-[#233648] py-10 px-10 flex flex-col md:flex-row items-center justify-between max-w-[1280px] mx-auto w-full gap-6 reveal">
+<div class="flex items-center gap-2 text-slate-500 text-sm">
+<span>© 2024 Carlos Paz Hostel Premium. Todos los derechos reservados.</span>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">policy</span> Términos</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">verified_user</span> Privacidad</a>
+</div>
+</footer>
+</div>
+</div>
+
+<script>
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1 }
+);
+document.querySelectorAll(".reveal, .hover-card").forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

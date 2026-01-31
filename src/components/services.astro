@@ -1,0 +1,217 @@
+<section class="services relative py-32 overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 -z-10">
+    <div class="services-bg"></div>
+  </div>
+
+  <main class="max-w-7xl mx-auto px-6">
+
+    <!-- TÍTULO -->
+    <header class="text-center mb-20 services-header reveal">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">
+        Servicios & Amenities
+      </h2>
+      <p class="text-slate-500 dark:text-[#92adc9] max-w-2xl mx-auto">
+        Todo lo que necesitás para una experiencia completa y confortable.
+      </p>
+    </header>
+
+    <!-- GRID -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- CARD -->
+      <article class="service-card reveal">
+        <span class="service-number">01</span>
+        <div class="icon">
+          <span class="material-symbols-outlined">restaurant</span>
+        </div>
+        <h3>Gastronomía</h3>
+        <ul class="service-list">
+          <li>Desayuno incluido</li>
+          <li>Bar y cafetería</li>
+          <li>Cocina libre 24 hs</li>
+          <li>Asador tradicional</li>
+          <li>Horno de barro</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <span class="service-number">02</span>
+        <div class="icon">
+          <span class="material-symbols-outlined">pool</span>
+        </div>
+        <h3>Recreación</h3>
+        <ul class="service-list">
+          <li>Piscina</li>
+          <li>Zona chill-out</li>
+          <li>Disco</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <span class="service-number">03</span>
+        <div class="icon">
+          <span class="material-symbols-outlined">bed</span>
+        </div>
+        <h3>Habitaciones Privadas</h3>
+        <ul class="service-list">
+          <li>Dobles, triples y cuádruples</li>
+          <li>TV en habitaciones</li>
+          <li>Calefacción y A/A</li>
+          <li>Ropa de cama incluida</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <span class="service-number">04</span>
+        <div class="icon">
+          <span class="material-symbols-outlined">cleaning_services</span>
+        </div>
+        <h3>Servicios Incluidos</h3>
+        <ul class="service-list">
+          <li>Agua caliente 24 hs</li>
+          <li>Servicio de mucama</li>
+          <li>Alquiler de toallas</li>
+          <li>Wi-Fi libre</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <span class="service-number">05</span>
+        <div class="icon">
+          <span class="material-symbols-outlined">verified_user</span>
+        </div>
+        <h3>Seguridad & Atención</h3>
+        <ul class="service-list">
+          <li>Atención personalizada 24 hs</li>
+          <li>Personal bilingüe</li>
+          <li>Lockers individuales</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <span class="service-number">06</span>
+        <div class="icon">
+          <span class="material-symbols-outlined">travel_explore</span>
+        </div>
+        <h3>Experiencias & Turismo</h3>
+        <ul class="service-list">
+          <li>Guías y turismo alternativo</li>
+        </ul>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- SCRIPT -->
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
+
+  <style>
+    /* BG */
+    .services-bg {
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.05), transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,.04), transparent 60%);
+      animation: floatBg 18s ease-in-out infinite alternate;
+    }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: .9s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Card */
+    .service-card {
+      position: relative;
+      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(148,163,184,.25);
+      border-radius: 1rem;
+      padding: 2rem;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      transition: .4s ease;
+    }
+
+    :global(.dark) .service-card {
+      background: #192633;
+      border-color: #324d67;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(56,189,248,.6);
+      box-shadow: 0 30px 60px rgba(56,189,248,.15);
+    }
+
+    /* Icon */
+    .icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: .75rem;
+      background: rgba(56,189,248,.12);
+      color: rgb(56 189 248);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      transition: .4s ease;
+    }
+
+    .service-card:hover .icon {
+      transform: scale(1.15) rotate(-4deg);
+    }
+
+    /* LISTA ELEGANTE */
+    .service-list {
+      margin-top: auto;
+      font-size: .9rem;
+      color: rgb(100 116 139);
+    }
+
+    :global(.dark) .service-list {
+      color: #92adc9;
+    }
+
+    .service-list li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: .5rem;
+    }
+
+    .service-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .55rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgb(56 189 248);
+    }
+
+    @keyframes floatBg {
+      from { transform: translateY(0); }
+      to { transform: translateY(-40px); }
+    }
+  </style>
+</section>

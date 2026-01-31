@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería | Carlos Paz Hostel</title>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap"/>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#1173d4",
+            gold: "#d4af37",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101922",
+          },
+          fontFamily: {
+            display: ["Plus Jakarta Sans", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.75rem",
+            lg: "1rem",
+            xl: "1.25rem",
+            full: "9999px",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+    }
+
+    /* ===== MASONRY GRID ===== */
+    .masonry-grid {
+      column-count: 3;
+      column-gap: 2.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .masonry-grid {
+        column-count: 2;
+      }
+    }
+
+    /* ===== MASONRY ITEMS ===== */
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 2.5rem;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      position: relative;
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+
+    .masonry-item.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .masonry-item.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      height: 0;
+      overflow: hidden;
+    }
+
+    /* ===== IMAGE ZOOM + HOVER ===== */
+    .image-zoom {
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      display: block;
+      width: 100%;
+    }
+
+    .masonry-item:hover .image-zoom {
+      transform: scale(1.05) rotate(-0.3deg);
+    }
+
+    /* ===== HOVER OVERLAY ===== */
+    .hover-overlay {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.25), rgba(0,0,0,0));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      border-radius: inherit;
+    }
+
+    .masonry-item:hover .hover-overlay {
+      opacity: 1;
+    }
+
+    /* ===== TITLE & FILTERS REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white">
+  <main class="max-w-[1400px] mx-auto px-10 py-16">
+
+    <!-- TÍTULO -->
+    <div class="mb-6 text-center reveal">
+      <h1 class="tracking-[0.15em] text-[40px] md:text-[56px] font-light uppercase">
+        Galería
+      </h1>
+      <p class="text-slate-500 dark:text-[#92adc9] max-w-2xl mx-auto mt-4">
+        Espacios y experiencias del Carlos Paz Hostel
+      </p>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="flex gap-6 py-12 justify-center flex-wrap reveal">
+      <a href="#all" data-filter="all" class="filter-link text-primary border-b-2 border-primary text-xs font-bold tracking-widest uppercase pb-1">Todos</a>
+      <a href="#patio" data-filter="patio" class="filter-link text-slate-400 hover:text-primary text-xs font-bold tracking-widest uppercase pb-1">Patio</a>
+      <a href="#cocina" data-filter="cocina" class="filter-link text-slate-400 hover:text-primary text-xs font-bold tracking-widest uppercase pb-1">Cocina</a>
+      <a href="#comedor" data-filter="comedor" class="filter-link text-slate-400 hover:text-primary text-xs font-bold tracking-widest uppercase pb-1">Comedor</a>
+      <a href="#habitaciones" data-filter="habitaciones" class="filter-link text-slate-400 hover:text-primary text-xs font-bold tracking-widest uppercase pb-1">Habitaciones</a>
+      <a href="#recreativo" data-filter="recreativo" class="filter-link text-slate-400 hover:text-primary text-xs font-bold tracking-widest uppercase pb-1">Recreativo</a>
+    </div>
+
+    <!-- GRID -->
+    <div class="masonry-grid w-full">
+
+      <!-- ITEMS -->
+      <div class="masonry-item group relative overflow-hidden rounded-lg" data-category="patio">
+        <img src="/1.jpg" class="image-zoom w-full" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item group relative overflow-hidden rounded-lg" data-category="patio">
+        <img src="/2.jpg" class="image-zoom w-full" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item group relative overflow-hidden rounded-lg" data-category="patio">
+        <img src="/3.jpg" class="image-zoom w-full" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="patio">
+        <img src="/4.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="patio">
+        <img src="/5.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="cocina">
+        <img src="/fotos13.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="cocina">
+        <img src="/fotos14.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="comedor">
+        <img src="/fotos15.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="comedor">
+        <img src="/fotos19.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="comedor">
+        <img src="/fotos17.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="habitaciones">
+        <img src="/fotos04.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="habitaciones">
+        <img src="/fotos05.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="habitaciones">
+        <img src="/fotos06.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="habitaciones">
+        <img src="/fotos07.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="comedor">
+        <img src="/fotos23.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="comedor">
+        <img src="/fotos24.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="comedor">
+        <img src="/fotos25.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="comedor">
+        <img src="/fotos26.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="comedor">
+        <img src="/fotos27.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="recreativo">
+        <img src="/fotos08.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="recreativo">
+        <img src="/fotos09.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+      <div class="masonry-item" data-category="recreativo">
+        <img src="/fotos20.jpg" class="image-zoom w-full rounded-lg" />
+        <span class="hover-overlay"></span>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- SCRIPT FILTRO (SIN TOCAR) -->
+  <script>
+    const links = document.querySelectorAll(".filter-link");
+    const items = document.querySelectorAll(".masonry-item");
+
+    links.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const filter = link.dataset.filter;
+        if (!filter) return;
+
+        links.forEach((l) => {
+          l.classList.remove("text-primary", "border-b-2", "border-primary");
+          l.classList.add("text-slate-400");
+        });
+
+        link.classList.add("text-primary", "border-b-2", "border-primary");
+        link.classList.remove("text-slate-400");
+
+        items.forEach((item) => {
+          const category = item.dataset.category;
+
+          if (filter === "all" || category === filter) {
+            item.classList.remove("is-hidden");
+          } else {
+            item.classList.add("is-hidden");
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- ANIMACION SCROLL SOLO PARA DAR VIDA -->
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll(".reveal, .masonry-item").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

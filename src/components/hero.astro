@@ -1,0 +1,160 @@
+<section class="hero relative min-h-screen flex flex-col overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 z-0">
+    <div class="hero-bg w-full h-full"></div>
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- Content -->
+  <main
+    class="relative z-10 flex-1 flex flex-col items-center justify-center
+           px-4 text-center pt-32 lg:pt-40 hero-content"
+  >
+    <div class="max-w-4xl">
+      <h1
+        class="text-white text-5xl md:text-7xl font-extrabold
+               leading-[1.1] tracking-[-0.03em] mb-6"
+      >
+        Tu refugio de lujo en el <br />
+        corazón de Carlos Paz
+      </h1>
+
+      <p class="text-white/90 text-lg md:text-xl max-w-2xl mx-auto mb-16">
+        Exclusividad, confort y la mejor vista de las sierras en una ubicación privilegiada.
+      </p>
+    </div>
+
+    <!-- Booking Bar -->
+    <div class="w-full max-w-5xl px-4 pb-20">
+      <form id="bookingForm" class="bg-[rgba(16,25,34,.6)] backdrop-blur-xl border border-white/10
+               p-2 rounded-xl lg:rounded-full shadow-2xl
+               flex flex-col lg:flex-row items-center gap-2">
+        <!-- Check-in -->
+        <div class="flex-1 w-full px-6 py-3 flex flex-col border-b lg:border-b-0 lg:border-r border-white/10">
+          <span class="text-[#92adc9] text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm">calendar_month</span>
+            Desde
+          </span>
+          <input id="checkin" type="date" class="bg-transparent border-0 text-white focus:ring-0" required/>
+        </div>
+
+        <!-- Check-out -->
+        <div class="flex-1 w-full px-6 py-3 flex flex-col border-b lg:border-b-0 lg:border-r border-white/10">
+          <span class="text-[#92adc9] text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm">event_available</span>
+            Hasta
+          </span>
+          <input id="checkout" type="date" class="bg-transparent border-0 text-white focus:ring-0" required/>
+        </div>
+
+        <!-- Guests -->
+        <div class="flex-1 w-full px-6 py-3 flex flex-col">
+          <span class="text-[#92adc9] text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm">group</span>
+            Huéspedes
+          </span>
+          <select id="guests" class="bg-transparent border-0 text-white focus:ring-0" required>
+            <option value="">Seleccionar</option>
+            <option value="1">1 Adulto</option>
+            <option selected value="2">2 Adultos</option>
+            <option value="3">3 Adultos</option>
+            <option value="4">Familia (4+)</option>
+          </select>
+        </div>
+
+        <!-- CTA -->
+        <button
+          id="submitBtn"
+          type="submit"
+          class="w-full lg:w-auto bg-primary hover:bg-primary/90
+                 text-white px-10 py-4 lg:py-5
+                 rounded-lg lg:rounded-full font-bold
+                 transition-all flex items-center gap-2"
+          disabled
+        >
+          Consultar Disponibilidad
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Scroll indicator -->
+  <footer class="relative z-10 pb-8 flex flex-col items-center opacity-60 animate-bounce">
+    <span class="text-[10px] uppercase font-bold tracking-[0.2em] mb-1">
+      Explorar
+    </span>
+    <span class="material-symbols-outlined">expand_more</span>
+  </footer>
+</section>
+
+<style>
+/* Background image + zoom lento */
+.hero-bg {
+  background-image:
+    linear-gradient(rgba(16,25,34,.4), rgba(16,25,34,.85)),
+    url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLDodUgAx_RgzoPKWgkEAK0HdWH_EIODMoJ6prXjjlqizac9sd60nLrLUg9NoJpMFZeQyMCS-5Ovm17wVXyaUxFJVqUCcRcS4lP87682Qf6TXwNevzS1FF-oknk2KcktuFYYUM9GT_trqQu0mEr6jiTNvmcB5iKQxSIn52iXONKKNYBCdpjHq0Jqv7PmvOkWHJgNfDAHaqrAYDMCj0NRkGZGkVapEzHzmEhFIQXpuNU-ulnMo7vXfJxR7fKfJICCI0kToocwOqf0xK');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  animation: zoomBg 25s ease-in-out infinite alternate;
+}
+
+/* Overlay animado */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.06), transparent 60%);
+  animation: pulseOverlay 6s ease-in-out infinite;
+}
+
+/* Fade + slide del contenido */
+.hero-content {
+  animation: fadeUp 1.2s ease-out both;
+}
+
+@keyframes zoomBg {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseOverlay {
+  0%, 100% { opacity: .4; }
+  50% { opacity: .7; }
+}
+</style>
+
+<script>
+// Form fields y botón
+const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
+const checkin = document.getElementById('checkin') as HTMLInputElement;
+const checkout = document.getElementById('checkout') as HTMLInputElement;
+const guests = document.getElementById('guests') as HTMLSelectElement;
+
+const formFields: (HTMLInputElement | HTMLSelectElement)[] = [checkin, checkout, guests];
+
+// Validar que todos los campos tengan valor
+function validateForm() {
+  const allFilled = formFields.every(f => f.value.trim() !== '');
+  if (submitBtn) submitBtn.disabled = !allFilled;
+}
+
+// Escuchar cambios en todos los campos
+formFields.forEach(f => f.addEventListener('input', validateForm));
+
+// Enviar a WhatsApp
+const bookingForm = document.getElementById('bookingForm') as HTMLFormElement;
+bookingForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const msg = `¡Hola! Quiero consultar disponibilidad en Carlos Paz Hostel.\nDesde: ${checkin.value}\nHasta: ${checkout.value}\nHuéspedes: ${guests.value}`;
+  const url = `https://wa.me/543549430573?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+});
+</script>
+
